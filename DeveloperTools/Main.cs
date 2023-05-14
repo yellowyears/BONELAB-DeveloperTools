@@ -1,4 +1,6 @@
-﻿using MelonLoader;
+﻿using DeveloperTools.Modules;
+using Il2CppSystem.IO;
+using MelonLoader;
 
 namespace DeveloperTools
 {
@@ -13,6 +15,17 @@ namespace DeveloperTools
 
     internal class Main : MelonMod
     {
+        
+        // Melon Callbacks
+        public override void OnInitializeMelon()
+        {         
+            Preferences.InitialisePreferences();
+
+            if (Preferences.createErrorLog.Value)
+            {
+                ErrorLogging.SetupLogging(HarmonyInstance);
+            }
+        }
         
     }
     
