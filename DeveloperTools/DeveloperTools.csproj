@@ -39,6 +39,8 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="Modules\ErrorLogging.cs" />
+    <Compile Include="Modules\Menu\IMGUIMenu.cs" />
+    <Compile Include="Modules\Menu\IMGUIMenuManager.cs" />
     <Compile Include="Preferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +77,12 @@
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BONELAB\MelonLoader\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,7 @@
 ﻿using DeveloperTools.Modules;
-using Il2CppSystem.IO;
 using MelonLoader;
+using UnityEngine;
+using DeveloperTools.Modules.Menu;
 
 namespace DeveloperTools
 {
@@ -24,6 +25,15 @@ namespace DeveloperTools
             if (Preferences.createErrorLog.Value)
             {
                 ErrorLogging.SetupLogging(HarmonyInstance);
+            }
+
+            // Return at this point as nothing else is useful for quest
+            if (Application.platform == RuntimePlatform.Android) return;
+            
+            if (Preferences.enableMenuOnStartup.Value)
+            {
+                // Initialise the menu when the current level is fully initialised
+                BoneLib.Hooking.OnLevelInitialized += info => IMGUIMenuManager.InitialiseGUI();
             }
         }
         
