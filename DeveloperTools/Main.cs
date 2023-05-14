@@ -16,7 +16,6 @@ namespace DeveloperTools
 
     internal class Main : MelonMod
     {
-        
         // Melon Callbacks
         public override void OnInitializeMelon()
         {         
@@ -30,13 +29,9 @@ namespace DeveloperTools
             // Return at this point as nothing else is useful for quest
             if (Application.platform == RuntimePlatform.Android) return;
             
-            if (Preferences.enableMenuOnStartup.Value)
-            {
-                // Initialise the menu when the current level is fully initialised
-                BoneLib.Hooking.OnLevelInitialized += info => IMGUIMenuManager.InitialiseGUI();
-            }
+            // Initialise the menu when the current level is fully initialised
+            BoneLib.Hooking.OnLevelInitialized += info => IMGUIMenuManager.InitialiseGUI();
+            MelonEvents.OnUpdate.Subscribe(IMGUIMenuManager.ListenForInput);
         }
-        
     }
-    
 }

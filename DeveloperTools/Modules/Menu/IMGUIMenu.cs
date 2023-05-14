@@ -9,21 +9,13 @@ namespace DeveloperTools.Modules.Menu
     {
         public IMGUIMenu(IntPtr ptr) : base(ptr) { }
 
-        private bool menuEnabled = true;
-        
-        private void Update()
-        {
-            if (Input.GetKeyDown(Preferences.menuToggleKey.Value))
-            {
-                menuEnabled = !menuEnabled;
-            }
-        }
+        public bool menuEnabled;
 
         private void OnGUI()
         {
             if (!menuEnabled) return;
             
-            GUI.Box(new Rect(10,10,100,90), "Developer Tools");
+            GUI.Box(new Rect(10,10,150,90), "Developer Tools");
         }
 
     }
