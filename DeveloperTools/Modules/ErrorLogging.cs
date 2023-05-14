@@ -38,6 +38,9 @@ namespace DeveloperTools.Modules
             // Create the -prev filepath from the _logDirectory
             var prevLogPath = MelonUtils.MelonLoaderDirectory + @"\ErrorLog-prev.txt";
             
+            // Delete the previous log if it exists already
+            if(File.Exists(prevLogPath)) File.Delete(prevLogPath);
+            
             // Copy the existing log into the new prev log
             File.Copy(_logDirectory, prevLogPath);
             
