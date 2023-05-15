@@ -32,6 +32,8 @@ namespace DeveloperTools
             // Initialise the menu when the current level is fully initialised
             BoneLib.Hooking.OnLevelInitialized += info => IMGUIMenuManager.InitialiseGUI();
             MelonEvents.OnUpdate.Subscribe(IMGUIMenuManager.ListenForInput);
+            
+            Player.InitialisePlayer(HarmonyInstance);
         }
     }
 }

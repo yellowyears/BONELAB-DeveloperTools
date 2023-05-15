@@ -41,6 +41,7 @@
     <Compile Include="Modules\ErrorLogging.cs" />
     <Compile Include="Modules\Menu\IMGUIMenu.cs" />
     <Compile Include="Modules\Menu\IMGUIMenuManager.cs" />
+    <Compile Include="Modules\Player.cs" />
     <Compile Include="Preferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

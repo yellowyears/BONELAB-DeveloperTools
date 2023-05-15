@@ -15,6 +15,12 @@ namespace DeveloperTools.Modules.Menu
             _instance.menuEnabled = Preferences.enableMenuOnStartup.Value;
         }
 
+        // TODO: add method to add menu items from inside other classes?
+        public static void AddMenuOption()
+        {
+            
+        }
+
         private static void ToggleMenu()
         {
             _instance.menuEnabled = !_instance.menuEnabled;
