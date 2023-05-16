@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MelonLoader;
+using UnityEngine;
 
 namespace DeveloperTools.Modules.Menu
 {
@@ -15,6 +16,7 @@ namespace DeveloperTools.Modules.Menu
             _instance.menuEnabled = Preferences.enableMenuOnStartup.Value;
             
             AssetWarehouseManager.GetLevelCrates();
+            MelonLogger.Msg("Initialised IMGUI Menu");
         }
 
         private static void ToggleMenu()

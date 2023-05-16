@@ -14,6 +14,9 @@ namespace DeveloperTools.Modules
         {
             var crates = AssetWarehouse.Instance.GetCrates();
             
+            // Clear the list to prevent duplicates being added
+            levelCrates.Clear();
+            
             foreach (var crate in crates)
             {
                 // Check whether the crate is a level crate

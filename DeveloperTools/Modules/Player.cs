@@ -1,21 +1,14 @@
-﻿using BoneLib;
-using HarmonyLib;
+﻿using HarmonyLib;
 using SLZ.Rig;
 using UnityEngine;
 
 namespace DeveloperTools.Modules
 {
-    internal class Player
+    internal static class Player
     {
 
         private static Vector3 _rigHomePosition;
-        
-        public static void InitialisePlayer(HarmonyLib.Harmony instance)
-        {
-            instance.Patch(typeof(RigManager).GetMethod("Awake"),
-                postfix: new HarmonyMethod(typeof(RigManagerAwakePatch).GetMethod("Postfix")));
-        }
-        
+
         public static void ResetPlayerPosition()
         {
             BoneLib.Player.rigManager.transform.position = _rigHomePosition;
@@ -23,6 +16,7 @@ namespace DeveloperTools.Modules
         
         // Patching
 
+        [HarmonyPatch(typeof(RigManager), "Awake")]
         private static class RigManagerAwakePatch
         {
             public static void Postfix(RigManager __instance)

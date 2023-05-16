@@ -1,12 +1,7 @@
 ﻿using System;
 using MelonLoader;
-using SLZ.Bonelab;
 using SLZ.Marrow.SceneStreaming;
-using SLZ.Marrow.Warehouse;
-using SLZ.Utilities;
-using SLZ.Zones;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace DeveloperTools.Modules.Menu
 {
@@ -17,7 +12,7 @@ namespace DeveloperTools.Modules.Menu
 
         public bool menuEnabled;
 
-        private Rect previousRect;
+        private Rect _previousRect;
 
         private void OnGUI()
         {
@@ -42,9 +37,14 @@ namespace DeveloperTools.Modules.Menu
         private void BuildAssetWarehouseMenu()
         {
             var root = new Rect(160, 10, 150, 90);
-            previousRect = new Rect(170, 40, 130, 20);
+            _previousRect = new Rect(170, 40, 130, 20);
             
             GUI.Box(root, "Asset Warehouse");
+
+            if (GUI.Button(_previousRect, "Reload Level"))
+            {
+                SceneStreamer.Reload();
+            }
 
             if (AssetWarehouseManager.levelCrates.Count < 0)
             {
@@ -54,17 +54,15 @@ namespace DeveloperTools.Modules.Menu
             {
                 foreach (var level in AssetWarehouseManager.levelCrates)
                 {
-                    previousRect = new Rect(previousRect.x, previousRect.y + 30, 130, 20);
+                    _previousRect = new Rect(_previousRect.x, _previousRect.y + 30, 130, 20);
 
-                    if(GUI.Button(previousRect, level.Title))
+                    if(GUI.Button(_previousRect, level.Title))
                     {
                         // Load the level that the pressed button corresponds to
                         SceneStreamer.Load(level.Barcode);
                     }
                 }
             }
-            
-
         }
         
     }
