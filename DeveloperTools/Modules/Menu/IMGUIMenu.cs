@@ -33,14 +33,26 @@ namespace DeveloperTools.Modules.Menu
         }
 
         // Module Player
-        private void BuildPlayerMenu()
+        private static void BuildPlayerMenu()
         {
-            GUI.Box(new Rect(10,10,150,90), "Player");
+            GUI.Box(new Rect(10,10,150,150), "Player");
             
-            if(GUI.Button(new Rect(20,40,130,20), "Reset Player Position"))
+            if(GUI.Button(new Rect(20,40,130,20), "Teleport To Home"))
             {
-                Player.ResetPlayerPosition();
+                Player.TeleportPlayerToHome();
             }
+
+            if (GUI.Button(new Rect(20, 70, 130, 20), "Set Player Home"))
+            {
+                Player.SetPlayerHome();
+            }
+
+            if (GUI.Button(new Rect(20, 100, 130, 20), "Reset Player Home"))
+            {
+                Player.ResetPlayerHome();
+            }
+            
+            GUI.Label(new Rect(20, 120, 130, 50), $"Current Home:\n{Player.playerHomePosition}");
         }
 
         // Module AssetWarehouseManager
