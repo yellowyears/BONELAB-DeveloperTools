@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <Compile Include="Modules\AssetWarehouseManager.cs" />
     <Compile Include="Modules\ErrorLogging.cs" />
     <Compile Include="Modules\Menu\IMGUIMenu.cs" />
     <Compile Include="Modules\Menu\IMGUIMenuManager.cs" />

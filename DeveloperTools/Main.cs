@@ -2,6 +2,8 @@
 using MelonLoader;
 using UnityEngine;
 using DeveloperTools.Modules.Menu;
+using Il2CppSystem;
+using SLZ.Marrow.Warehouse;
 
 namespace DeveloperTools
 {
@@ -16,9 +18,10 @@ namespace DeveloperTools
 
     internal class Main : MelonMod
     {
+        
         // Melon Callbacks
         public override void OnInitializeMelon()
-        {         
+        {
             Preferences.InitialisePreferences();
 
             if (Preferences.createErrorLog.Value)
@@ -28,12 +31,11 @@ namespace DeveloperTools
 
             // Return at this point as nothing else is useful for quest
             if (Application.platform == RuntimePlatform.Android) return;
-            
+
             // Initialise the menu when the current level is fully initialised
             BoneLib.Hooking.OnLevelInitialized += info => IMGUIMenuManager.InitialiseGUI();
             MelonEvents.OnUpdate.Subscribe(IMGUIMenuManager.ListenForInput);
-            
-            Player.InitialisePlayer(HarmonyInstance);
         }
+
     }
 }

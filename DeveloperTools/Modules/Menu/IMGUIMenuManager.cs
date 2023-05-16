@@ -13,12 +13,8 @@ namespace DeveloperTools.Modules.Menu
             _instance = menuObject.AddComponent<IMGUIMenu>();
 
             _instance.menuEnabled = Preferences.enableMenuOnStartup.Value;
-        }
-
-        // TODO: add method to add menu items from inside other classes?
-        public static void AddMenuOption()
-        {
             
+            AssetWarehouseManager.GetLevelCrates();
         }
 
         private static void ToggleMenu()
