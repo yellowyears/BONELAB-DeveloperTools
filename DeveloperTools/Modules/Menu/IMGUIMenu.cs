@@ -14,12 +14,22 @@ namespace DeveloperTools.Modules.Menu
 
         private Rect _previousRect;
 
-        private void OnGUI()
+        public void BuildGUI()
         {
             if (!menuEnabled) return;
             
             BuildPlayerMenu();
             BuildAssetWarehouseMenu();
+        }
+        
+        private void ToggleMenu()
+        {
+            menuEnabled = !menuEnabled;
+        }
+
+        public void ListenForInput()
+        {
+            if (Input.GetKeyDown(Preferences.menuToggleKey.Value)) ToggleMenu();
         }
 
         // Module Player
@@ -46,13 +56,13 @@ namespace DeveloperTools.Modules.Menu
                 SceneStreamer.Reload();
             }
 
-            if (AssetWarehouseManager.levelCrates.Count < 0)
+            if (AssetWarehouseHelper.levelCrates.Count < 0)
             {
                 GUI.Label(new Rect(root.x + 10, root.y + 30, root.width - 20, 20), "ERROR: No Level Crates!");
             }
             else
             {
-                foreach (var level in AssetWarehouseManager.levelCrates)
+                foreach (var level in AssetWarehouseHelper.levelCrates)
                 {
                     _previousRect = new Rect(_previousRect.x, _previousRect.y + 30, 130, 20);
 

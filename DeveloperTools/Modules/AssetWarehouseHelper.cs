@@ -5,7 +5,7 @@ using Il2CppSystem.Collections.Generic;
 
 namespace DeveloperTools.Modules
 {
-    internal static class AssetWarehouseManager
+    internal static class AssetWarehouseHelper
     {
 
         public static List<Crate> levelCrates = new List<Crate>();

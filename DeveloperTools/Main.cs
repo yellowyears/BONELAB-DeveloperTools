@@ -31,9 +31,22 @@ namespace DeveloperTools
             if (Application.platform == RuntimePlatform.Android) return;
 
             // Initialise the menu when the current level is fully initialised
-            BoneLib.Hooking.OnLevelInitialized += info => IMGUIMenuManager.InitialiseGUI();
-            MelonEvents.OnUpdate.Subscribe(IMGUIMenuManager.ListenForInput);
+            BoneLib.Hooking.OnLevelInitialized += info => InitialiseGUI();
         }
 
+        private void InitialiseGUI()
+        {
+            var menuObject = new GameObject("Developer Tools Menu");
+            var menu = menuObject.AddComponent<IMGUIMenu>();
+
+            menu.menuEnabled = Preferences.enableMenuOnStartup.Value;
+            
+            AssetWarehouseHelper.GetLevelCrates();
+            MelonEvents.OnUpdate.Subscribe(menu.ListenForInput);
+            MelonEvents.OnGUI.Subscribe(menu.BuildGUI);
+            
+            MelonLogger.Msg("Initialised IMGUI Menu");
+        }
+        
     }
 }
