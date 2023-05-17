@@ -35,7 +35,7 @@ namespace DeveloperTools.Modules.Menu
         // Module Player
         private static void BuildPlayerMenu()
         {
-            GUI.Box(new Rect(10,10,150,150), "Player");
+            GUI.Box(new Rect(10,10,150,180), "Player");
             
             if(GUI.Button(new Rect(20,40,130,20), "Teleport To Home"))
             {
@@ -51,15 +51,22 @@ namespace DeveloperTools.Modules.Menu
             {
                 Player.ResetPlayerHome();
             }
+
+            if (GUI.Button(new Rect(20, 130, 130, 20), "Give 100 Ammo"))
+            {
+                Player.GiveAmmo(Player.lightGroup, 100);
+                Player.GiveAmmo(Player.mediumGroup, 100);
+                Player.GiveAmmo(Player.heavyGroup, 100);
+            }
             
-            GUI.Label(new Rect(20, 120, 130, 50), $"Current Home:\n{Player.playerHomePosition}");
+            GUI.Label(new Rect(20, 150, 130, 50), $"Current Home:\n{Player.playerHomePosition}");
         }
 
         // Module AssetWarehouseManager
         private void BuildAssetWarehouseMenu()
         {
-            var root = new Rect(160, 10, 150, 90);
-            _previousRect = new Rect(170, 40, 130, 20);
+            var root = new Rect(170, 10, 150, 570);
+            _previousRect = new Rect(180, 40, 130, 20);
             
             GUI.Box(root, "Asset Warehouse");
 
